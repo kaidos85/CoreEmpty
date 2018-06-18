@@ -4,9 +4,8 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: {
-        main: './ClientApp/app.js'
-    },
+    entry: './ClientApp/app.tsx',
+    devtool: 'inline-source-map',
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
     },
@@ -18,9 +17,15 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js?$/, include: /ClientApp/,
+                test: /\.tsx?$/,
+                include: /ClientApp/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: "awesome-typescript-loader"
+            },
+            {
+                enforce: "pre",
+                test: /\.js$/,
+                loader: "source-map-loader"
             }
         ]
     }
