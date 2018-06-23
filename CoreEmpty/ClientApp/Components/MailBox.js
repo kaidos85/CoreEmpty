@@ -12,18 +12,30 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var func = function (input, str) {
-    return "Some text: " + str + " = " + input * 2;
+    return str + " = " + input * 2;
 };
 var MailBox = /** @class */ (function (_super) {
     __extends(MailBox, _super);
-    function MailBox(props) {
-        return _super.call(this, props) || this;
+    function MailBox(props, state) {
+        var _this = _super.call(this, props, state) || this;
+        _this.state = {
+            age: 16
+        };
+        return _this;
     }
+    MailBox.prototype.changeName = function () {
+        var num = Math.floor(Math.random() * 100);
+        console.log(num);
+        this.setState({ age: num });
+    };
     MailBox.prototype.render = function () {
+        var _this = this;
         return (React.createElement("div", { className: "shopping-list" },
             React.createElement("h1", null,
-                "Shopping List for Mail for ",
-                this.props.name),
+                "User Name: ",
+                this.props.name,
+                " age is: ",
+                this.state.age),
             React.createElement("ul", null,
                 React.createElement("li", null,
                     "Instagram ",
@@ -32,8 +44,9 @@ var MailBox = /** @class */ (function (_super) {
                     "WhatsApp ",
                     func(5, 'asdf')),
                 React.createElement("li", null,
-                    "Oculus ",
-                    func(7, 'zxcv')))));
+                    " ",
+                    func(7, 'zxcv'))),
+            React.createElement("button", { onClick: function () { return _this.changeName(); } }, "Click me")));
     };
     return MailBox;
 }(React.Component));

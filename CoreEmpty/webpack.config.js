@@ -4,15 +4,19 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: './ClientApp/app.tsx',
-    devtool: 'inline-source-map',
+    performance: {
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
+    },
+    entry: { main: './ClientApp/app.tsx' },
+    //devtool: 'inline-source-map',
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx']
+        extensions: [ '.ts', '.tsx', '.js', '.jsx' ]
     },
     output: {
-        path: path.join(__dirname, './wwwroot/dist/'),
-        publicPath: 'dist/',        
-        filename: 'bundle.js'
+        path: path.join(__dirname, './wwwroot/dist/'),       
+        filename: 'bundle.js',
+        publicPath: 'dist/'
     },
     module: {
         rules: [
@@ -21,11 +25,6 @@ module.exports = {
                 include: /ClientApp/,
                 exclude: /node_modules/,
                 loader: "awesome-typescript-loader"
-            },
-            {
-                enforce: "pre",
-                test: /\.js$/,
-                loader: "source-map-loader"
             }
         ]
     }

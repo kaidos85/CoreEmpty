@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import MailBox from "./Components/MailBox";
 
 let c: number = 4;
-let a: string = 'aasdf';
+let a: string = 'a789';
 
 var func = function (input: number): number {
     return input * 2;

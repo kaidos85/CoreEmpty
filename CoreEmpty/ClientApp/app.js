@@ -4,7 +4,7 @@ var React = require("react");
 var ReactDOM = require("react-dom");
 var MailBox_1 = require("./Components/MailBox");
 var c = 4;
-var a = 'aasdf';
+var a = 'a789';
 var func = function (input) {
     return input * 2;
 };

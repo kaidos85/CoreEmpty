@@ -2,28 +2,42 @@
 import * as ReactDOM from "react-dom";
 
 let func = function (input: number, str: string): string {
-    return `Some text: ${str} = ${input * 2}`;
+    return `${str} = ${input * 2}`;
 }
 
 interface MailProps {
     name: string;
 }
 
-export default class MailBox extends React.Component<MailProps, {}> {
+interface MailState {
+    age: number;
+}
 
-    constructor(props: MailProps) {
-        super(props);
+export default class MailBox extends React.Component<MailProps, MailState> {
+
+    constructor(props: MailProps, state: MailState) {
+        super(props, state);
+        this.state = {
+            age: 16
+        };        
     }
 
-    render() {        
+    changeName() {
+        var num = Math.floor(Math.random() * 100);
+        console.log(num);
+        this.setState({ age: num });         
+    }
+
+    render() {
         return (
             <div className="shopping-list">
-                <h1>Shopping List for Mail for {this.props.name}</h1>
+                <h1>User Name: {this.props.name} age is: {this.state.age}</h1>
                 <ul>
                     <li>Instagram {func(4, 'qwer')}</li>
                     <li>WhatsApp {func(5, 'asdf')}</li>
-                    <li>Oculus {func(7, 'zxcv')}</li>
+                    <li>Telegram {func(7, 'zxcv')}</li>
                 </ul>
+                <button onClick={()=> this.changeName()}>Click me</button>
             </div>
         );
     }
