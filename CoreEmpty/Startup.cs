@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreEmpty.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -9,6 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using CoreEmpty.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace CoreEmpty
 {
@@ -24,6 +29,13 @@ namespace CoreEmpty
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var constr = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<MyAppContext>(opt => opt.UseNpgsql(constr, o=>o.UseNetTopologySuite()));
+
+            //services.AddIdentity<ApplicationUser, IdentityRole>()
+            //        .AddEntityFrameworkStores<MyAppContext>()
+            //        .Add
+            //services.c
             services.AddMvc();
         }
 

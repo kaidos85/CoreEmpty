@@ -44,7 +44,7 @@ var MailBox = /** @class */ (function (_super) {
                     "WhatsApp ",
                     func(5, 'asdf')),
                 React.createElement("li", null,
-                    " ",
+                    "Telegram ",
                     func(7, 'zxcv'))),
             React.createElement("button", { onClick: function () { return _this.changeName(); } }, "Click me")));
     };
