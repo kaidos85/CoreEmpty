@@ -12,6 +12,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.2" />
+    <PackageReference Include="NLog" Version="4.5.8" />
+    <PackageReference Include="NLog.Config" Version="4.5.8" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.6.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.1.1.1" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite" Version="2.1.1" />
   </ItemGroup>
@@ -23,6 +26,16 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app.tsx" />
     <TypeScriptCompile Include="ClientApp\Components\MailBox.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="C:\Users\a.kassymkhanov.KMG\.nuget\packages\nlog.config\4.5.8\contentFiles\any\any\NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="logs\" />
   </ItemGroup>
   
   <Target Name="DebugRunWebpack" BeforeTargets="Build">

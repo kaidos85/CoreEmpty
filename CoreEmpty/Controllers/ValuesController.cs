@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace CoreEmpty.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        ILogger log;
         // GET api/values
+        public ValuesController(ILogger<ValuesController> _log)
+        {
+            log = _log;
+        }
+
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            log.LogWarning(1, "Asdf: {0}, {1}", 1m, "aarraa");
             return new string[] { "value1", "value2" };
         }
 
